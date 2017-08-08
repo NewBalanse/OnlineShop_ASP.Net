@@ -1,0 +1,26 @@
+﻿@model OnlineBooks_Logic.model.Books
+
+<div class="col-md-4">
+    <pre>
+<span class="h2 " >@Model.Name</span>
+<br />
+<span class="h4">Автор: @Model.Author</span>
+<br />
+<span class="h4">Жарн: @Model.Category</span>
+<br />
+<span class="text-info h2">@Model.Price.ToString("# USD")</span>
+
+<img />
+@using (Html.BeginForm("AddToCard", "Card"))
+{
+    <div>
+        @Html.Hidden("returnUrl",Request.Url.PathAndQuery)
+        @Html.Hidden("booksID",Model.BookID)
+        
+        <input class="btn btn-default col-md-8" type="submit" value="Добавить в корзину" />
+    </div>
+}
+
+</pre>
+</div>
+

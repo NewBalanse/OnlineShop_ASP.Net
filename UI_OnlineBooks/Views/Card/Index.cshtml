@@ -1,0 +1,46 @@
+﻿@model UI_OnlineBooks.Models.ViewCard
+
+@{ 
+    ViewBag.Title = "BooksShop:Ваша корзина";
+}
+<h2></h2>
+<table>
+    <thead >
+        <tr>
+            <th>Count</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.cardlogic.list)
+        {
+            <tr>
+                <td>@item.COunt</td>
+                <td>@item.order.Name</td>
+                <td>@item.order.Price.ToString()</td>
+                <td>@((item.COunt*item.order.Price).ToString())</td>
+                <td>
+                   @using (Html.BeginForm("RemoveFromCard", "Card"))
+                   {
+                       @Html.Hidden("booksID",item.order.BookID);
+                       @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                       <input type="submit" value="Delete"/>
+                   }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total Price</td>
+            <td>@Model.cardlogic.TotalPrice().ToString()</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div>
+    <a href="@Model.returnUrl">Go to the back</a>
+    @Html.ActionLink("Оформить заказ","EndShop","Card")
+</div>

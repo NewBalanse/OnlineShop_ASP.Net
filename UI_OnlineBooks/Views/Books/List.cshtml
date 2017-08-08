@@ -1,0 +1,19 @@
+﻿@using UI_OnlineBooks.Models
+@model ListBooksModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+    @foreach (var item in @Model.books)
+    {
+        @Html.Partial("BooksConcreate", item);
+
+    }
+
+<div class="right">
+    @HtmlHelperCode.htmlString(Model.pageCofig, 
+    x => Url.Action("List","Books", new { page = x ,category = Model.Category}))
+</div>
+
+

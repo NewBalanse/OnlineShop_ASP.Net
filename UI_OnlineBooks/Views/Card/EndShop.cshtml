@@ -1,0 +1,18 @@
+﻿
+<div>
+    @using (Html.BeginForm("ShoppindEnd", "Card", FormMethod.Post))
+    {
+        <b>Enter Name</b>
+        @Html.TextBox("Name")
+        <b>Enter Adress</b>
+        @Html.TextBox("Adress")
+        <b>Enter City</b>
+        @Html.TextBox("City")
+        <b>Enter Country</b>
+        @Html.TextBox("Country")
+        <b>Enter Phone</b>
+        @Html.TextBox("Phone")
+        
+        <input type="submit" value="Submit" />
+    }
+</div>

@@ -1,0 +1,11 @@
+﻿@model UI_OnlineBooks.Models.ViewCard
+
+<div class="btn btn-default col-md-offset-6" >
+    @Html.ActionLink("Заказать", "Index", "Card", new { returnUrl = Request.Url.PathAndQuery })
+</div>
+<div class="col-md-offset-6">
+    <b class="h3">Ваша корзина</b>
+    @Model.cardlogic.list.Count() Books,
+    @Model.cardlogic.TotalPrice().ToString("# USD")
+</div>
+
